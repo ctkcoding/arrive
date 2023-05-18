@@ -1,0 +1,22 @@
+<html>
+    <a href="/">Home</a>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Word Count</th>
+        </tr>
+    </table>
+    <table>
+        <% userTabs.map((userTab, index)=>{%>
+        <tr>
+            <td><%=userTab.user%></td>
+            <td><%=userTab.wordCount%></td>
+        </tr>
+        <%})%>       
+    </table>
+    <script type = "text/javascript">
+        //todo - call live data function
+        //todo - update the table
+    </script>
+</html>
+

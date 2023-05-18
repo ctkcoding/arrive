@@ -1,0 +1,45 @@
+<html>
+    <a href="/">Home</a>
+    <table id="userTab">
+        <tr>
+            <th>User</th>
+            <th>Word Count</th>
+        </tr>
+    </table>
+    <table id="users">
+    </table>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        //todo - call live data function
+        var socket = io();
+    
+        //todo - update the table
+        socket.on('userTab', function(msg) {
+            var table = document.getElementById('users');   
+            //todo - for loop over users
+            var newTable = document.createElement('table');
+            newTable.id = 'users';
+            msg.forEach(element => {
+                // console.log(element);
+                var userName = element.user;
+
+                var wordCount = element.wordCount;
+                var tr = document.createElement('tr');
+                tr.id = userName;
+                var userCell = tr.appendChild(document.createElement('td'));
+                userCell.innerHTML = userName;
+                var wordCountCell = tr.appendChild(document.createElement('td'));
+                wordCountCell.innerHTML = wordCount;
+
+                newTable.appendChild(tr);
+            });
+
+            console.log(newTable);
+
+            table.replaceWith(newTable);
+
+            // console.log(newChildren);
+        });
+    </script>
+</html>
+
